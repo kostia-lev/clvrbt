@@ -1,6 +1,6 @@
 # Cleverbit Coding Task Task Template
-To run client please open /client folder in console and run: 
-npm start
+- To run client please open /client folder in console and run: 
+- npm start
 
 
 This template should be used for coding tasks of Cleverbit.

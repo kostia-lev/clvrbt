@@ -26,8 +26,8 @@ export class ProductComponent  implements OnInit, OnDestroy {
   protected readonly Boolean = Boolean;
 
   buyProduct(productId: number) {
-    this.buyProductSub = this.productService.buyProduct(productId).subscribe(()=>{
-      ///upate orders count
+    this.buyProductSub = this.productService.buyProduct(productId).subscribe((response)=>{
+      this.product!.ordersCount = response.ordersCount;
     });
   }
 

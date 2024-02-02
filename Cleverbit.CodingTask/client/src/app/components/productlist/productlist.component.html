@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col" >
+      <h3>Products</h3>
+      <div class="d-flex" *ngFor="let product of products">
+        <div class="p-2 d-flex align-items-center">{{product.id}}</div>
+        <div class="p-2 d-flex align-items-center">{{product.name}}</div>
+        <div class="p-2 d-flex align-items-center">{{product.price}}</div>
+        <div class="p-2 d-flex align-items-center"><a
+          title="visit"
+          [routerLink]="['/products', product.id]">
+          buy now
+        </a>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="row button-row mt-2 pt-2">
+    <div class="col">
+        <button class="btn btn-secondary btn-sm" (click)="logOut()">Log out</button>
+    </div>
+  </div>
+</div>

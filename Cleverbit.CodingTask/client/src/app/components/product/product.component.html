@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col" >
+      <h3>Products</h3>
+      <div class="d-flex">
+        <div class="p-2 d-flex align-items-center">{{product?.id}}</div>
+        <div class="p-2 d-flex align-items-center">{{product?.name}}</div>
+        <div class="p-2 d-flex align-items-center">{{product?.price}}</div>
+        <div class="p-2 d-flex align-items-center"><button
+          [disabled]="!Boolean(product?.id)"
+          title="buy now"
+          (click)="buyProduct(product!.id)">
+          buy now
+        </button>
+        </div>
+        <div class="p-2 d-flex align-items-center">
+          {{isPopular() ? "Hurry up! This product is popular!" : ""}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row button-row mt-2 pt-2">
+    <div class="col">
+      <button class="d-inline-block btn btn-secondary btn-sm m-3" (click)="logOut()">Log out</button>
+      <a class="link-secondary"
+        title="to main page"
+        [routerLink]="['/productlist']">
+        To main page
+      </a>
+    </div>
+  </div>
+</div>

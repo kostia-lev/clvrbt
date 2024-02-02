@@ -1,5 +1,6 @@
 using Cleverbit.CodingTask.Data;
 using Cleverbit.CodingTask.Host.Auth;
+using Cleverbit.CodingTask.Host.Services;
 using Cleverbit.CodingTask.Utilities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
@@ -36,6 +37,15 @@ namespace Cleverbit.CodingTask.Host
 
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+            
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+                });
+            });
+            services.AddScoped<IProductService, ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +64,8 @@ namespace Cleverbit.CodingTask.Host
             });
 
             app.UseRouting();
+            
+            app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
             app.UseAuthorization();

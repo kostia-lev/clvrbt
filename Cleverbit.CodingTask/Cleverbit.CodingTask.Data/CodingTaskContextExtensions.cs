@@ -12,8 +12,32 @@ namespace Cleverbit.CodingTask.Data
             await context.Database.EnsureCreatedAsync();
 
             var currentUsers = await context.Users.ToListAsync();
+            var currentProducts = await context.Products.ToListAsync();
 
             bool anyNewUser = false;
+            bool anyNewProduct = false;
+
+            if (!currentProducts.Any(u => u.Id == 0))
+            {
+                context.Products.Add(new Models.Product
+                {
+                    Name = "Product 1",
+                    Price = 10
+                });
+
+                anyNewProduct = true;
+            }
+
+            if (!currentProducts.Any(u => u.Id == 1))
+            {
+                context.Products.Add(new Models.Product
+                {
+                    Name = "Product 2",
+                    Price = 20
+                });
+
+                anyNewProduct = true;
+            }
 
             if (!currentUsers.Any(u => u.UserName == "User1"))
             {
@@ -59,7 +83,7 @@ namespace Cleverbit.CodingTask.Data
                 anyNewUser = true;
             }
 
-            if (anyNewUser)
+            if (anyNewUser || anyNewProduct)
             {
                 await context.SaveChangesAsync(); 
             }

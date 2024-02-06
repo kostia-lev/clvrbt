@@ -17,7 +17,7 @@ namespace Cleverbit.CodingTask.Data
             bool anyNewUser = false;
             bool anyNewProduct = false;
 
-            if (!currentProducts.Any(u => u.Id == 0))
+            if (!currentProducts.Any(u => u.Id == 1))
             {
                 context.Products.Add(new Models.Product
                 {
@@ -28,7 +28,7 @@ namespace Cleverbit.CodingTask.Data
                 anyNewProduct = true;
             }
 
-            if (!currentProducts.Any(u => u.Id == 1))
+            if (!currentProducts.Any(u => u.Id == 2))
             {
                 context.Products.Add(new Models.Product
                 {
